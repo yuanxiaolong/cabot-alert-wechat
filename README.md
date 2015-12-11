@@ -31,7 +31,7 @@ Step2. 携带刚才返回的 Token ，向消息接口发送 post 请求
 * 已通过 [微信企业号接口调试工具](http://qydev.weixin.qq.com/debug) 调试OK了微信账号，附上[发送接口说明](http://qydev.weixin.qq.com/wiki/index.php?title=%E6%B6%88%E6%81%AF%E7%B1%BB%E5%9E%8B%E5%8F%8A%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F)
 
 
-1. 编写配置文件,添加 插件名称（注意是下划线，不是工程名，而是里面的 模块名，由setup.py里指定的）, 并修改 ```setup.py``` 内的相关信息
+1.编写配置文件,添加 插件名称（注意是下划线，不是工程名，而是里面的 模块名，由setup.py里指定的）, 并修改 ```setup.py``` 内的相关信息
 
 ```
 vi conf/development.env
@@ -41,19 +41,19 @@ CABOT_PLUGINS_ENABLED=cabot_alert_hipchat==1.7.0,cabot_alert_twilio==1.6.1,cabot
 
 ```
 
-2. 通过 pip 安装自定义插件
+2.通过 pip 安装自定义插件
 
 ```
 pip install git+git://github.com/yuanxiaolong/cabot-alert-wechat.git
 ```
 
-3. 初始化数据库
+3.初始化数据库
 
 ```
 sh setup_dev.sh
 ```
 
-4. 无误后，启动 cabot
+4.无误后，启动 cabot
 
 ``` nohup foreman start & ```
 

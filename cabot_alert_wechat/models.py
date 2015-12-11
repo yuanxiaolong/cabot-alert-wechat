@@ -50,7 +50,7 @@ class WechatAlert(AlertPlugin):
         print "[Wechat Alert] 时间:{0}\n标题:{1}\n内容:{2}".format(time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(time.time())),title, content)
 
         # 发送逻辑
-        #send_msg(title,content,corpid,corpsecret,appid,partyid)
+        send_msg(title,content,corpid,corpsecret,appid,partyid)
 
         return
 

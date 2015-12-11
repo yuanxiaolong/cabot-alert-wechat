@@ -21,7 +21,7 @@ Step2. 携带刚才返回的 Token ，向消息接口发送 post 请求
 * 已停止 cabot 相关进程，有2组进程。
     * 消息队列处理进程 ```ps -ef | grep python | grep celery``` 10个进程
     * UI 进程 ``` ps -ef | grep python | grep manage.py ``` 1个进程（或许你有其他 django 应用在运行，请自己通过端口区分）
-  如果你实在记不清，也可以通过启动日志查看，类似这样的日志
+  如果你实在记不清，也可以通过启动日志查看，类似这样的日志，其中 celery 有10个进程，注意需要逐一关闭
   ```
   14:04:00 web.1    | started with pid 36652
   14:04:00 celery.1 | started with pid 36653

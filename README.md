@@ -9,8 +9,14 @@ Cabot Wechat Plugin
 Step1. 根据微信企业号属性 CorpId 和 Secret 向服务接口，获取本次请求 Token
 Step2. 携带刚才返回的 Token ，向消息接口发送 post 请求
 
-效果：![1](https://github.com/yuanxiaolong/cabot-alert-wechat/raw/master/img/wechat_alert.png)
+> 微信接口效果：
 
+![1](https://github.com/yuanxiaolong/cabot-alert-wechat/raw/master/img/wechat_alert.png)
+
+
+> 注意：实际插件报警结果，与email的内容一致，如下图
+
+![2](https://github.com/yuanxiaolong/cabot-alert-wechat/raw/master/img/alert_robot.png)
 
 ---
 
@@ -38,6 +44,12 @@ vi conf/development.env
 
 # Plugins to be loaded at launch
 CABOT_PLUGINS_ENABLED=cabot_alert_hipchat==1.7.0,cabot_alert_twilio==1.6.1,cabot_alert_email==1.3.1,cabot_alert_wechat==0.0.1
+
+# 需要添加 wechat 配置信息，前两个分别对应微信接口获取token，后2个是post请求json内容
+WECHAT_CORP_ID=你的CORP_ID
+WECHAT_CORP_SECRET=你的SECRET码
+WECHAT_APPID=应用ID
+WECHAT_PARTY_ID=组ID
 
 ```
 

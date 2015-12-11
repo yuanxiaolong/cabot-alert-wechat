@@ -13,7 +13,6 @@ Step2. 携带刚才返回的 Token ，向消息接口发送 post 请求
 
 ![1](https://github.com/yuanxiaolong/cabot-alert-wechat/raw/master/img/wechat_alert.png)
 
-
 > 注意：实际插件报警结果，与email的内容一致，如下图
 
 ![2](https://github.com/yuanxiaolong/cabot-alert-wechat/raw/master/img/alert_robot.png)

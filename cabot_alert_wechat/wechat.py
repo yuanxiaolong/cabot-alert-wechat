@@ -7,7 +7,7 @@ import json
 import requests
 
 # reload(sys)
-sys.setdefaultencoding('utf-8')
+# sys.setdefaultencoding('utf-8')
 
 class Token(object):
     # 获取token

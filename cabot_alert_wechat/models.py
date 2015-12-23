@@ -6,13 +6,13 @@ from wechat import send_msg
 from os import environ as env
 
 
-wechat_template = """Service {{ service.name }}  {% if service.overall_status != service.PASSING_STATUS %}alerting with status: {{ service.overall_status }}{% else %}is back to normal{% endif %}.
+wechat_template = """ {{ service.name }}  {% if service.overall_status != service.PASSING_STATUS %} 异常, 状态： {{ service.overall_status }}{% else %} 已回归正常 {% endif %}.
 {% if service.overall_status != service.PASSING_STATUS %}
-CHECKS FAILING:{% for check in service.all_failing_checks %}
-  FAILING - {{ check.name }} - Type: {{ check.check_category }} - Importance: {{ check.get_importance_display }}{% endfor %}
+Failing checks:{% for check in service.all_failing_checks %}
+  FAILING - {{ check.name }} - ({{ check.last_result.error | safe }}) {% endfor %}
 {% if service.all_passing_checks %}
 Passing checks:{% for check in service.all_passing_checks %}
-  PASSING - {{ check.name }} - Type: {{ check.check_category }} - Importance: {{ check.get_importance_display }}{% endfor %}
+  PASSING - {{ check.name }} - {% endfor %}
 {% endif %}
 {% endif %}
 """
@@ -33,10 +33,10 @@ class WechatAlert(AlertPlugin):
 
         # 获取 service 状态 如果不是 PASSING 则报警
         if service.overall_status != service.PASSING_STATUS:
-            title = '%s status for service: %s' % (
-                service.overall_status, service.name)
+            title = '%s 状态 %s' % (
+                service.name, service.overall_status)
         else:
-            title = 'Service back to normal: %s' % (service.name,)
+            title = '%s back to normal ' % (service.name,)
 
 
         # 渲染正文

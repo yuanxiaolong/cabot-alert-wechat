@@ -4,6 +4,12 @@ import time
 from django.template import Context, Template
 from wechat import send_msg
 from os import environ as env
+import sys
+
+default_encoding = 'utf-8'
+if sys.getdefaultencoding() != default_encoding:
+    reload(sys)
+    sys.setdefaultencoding(default_encoding)
 
 
 wechat_template = """ {{ service.name }}  {% if service.overall_status != service.PASSING_STATUS %} 异常, 状态： {{ service.overall_status }}{% else %} 已回归正常 {% endif %}.
@@ -33,8 +39,7 @@ class WechatAlert(AlertPlugin):
 
         # 获取 service 状态 如果不是 PASSING 则报警
         if service.overall_status != service.PASSING_STATUS:
-            title = '%s 状态 %s' % (
-                service.name, service.overall_status)
+            title = '%s 状态 %s' % (service.name, service.overall_status)
         else:
             title = '%s back to normal ' % (service.name,)
 

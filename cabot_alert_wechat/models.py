@@ -39,7 +39,7 @@ class WechatAlert(AlertPlugin):
 
         # 获取 service 状态 如果不是 PASSING 则报警
         if service.overall_status != service.PASSING_STATUS:
-            title = '%s 状态 %s' % (service.name, service.overall_status)
+            title = ' %s 状态 %s' % (service.name, service.overall_status)
         else:
             title = '%s back to normal ' % (service.name,)
 

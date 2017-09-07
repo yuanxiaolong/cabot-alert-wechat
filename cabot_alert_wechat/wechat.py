@@ -22,7 +22,7 @@ class Token(object):
             response = urllib2.urlopen(request)
             ret = response.read().strip()
             ret = json.loads(ret)
-            if 'errcode' in ret.keys():
+            if ret['errcode'] != 0:
                 print >> ret['errmsg'], sys.stderr
                 sys.exit(1)
             self.expire_time = time.time() + ret['expires_in']
@@ -36,9 +36,9 @@ def send_msg(title,content,corpid,corpsecret,appid,partyid):
     url = "https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token={0}".format(
         qs_token)
     payload = {
-        "toparty": partyid,
+        "toparty": "{0}".format(partyid),
         "msgtype": "text",
-        "agentid": appid,
+        "agentid": "{0}".format(appid),
         "text": {
                    "content": "标题:{0}\n内容:{1}".format(title, content)
 

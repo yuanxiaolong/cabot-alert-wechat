@@ -73,3 +73,8 @@ sh setup_dev.sh
 ## 插件编写
 
 官方更详细的 文档 [http://cabotapp.com/dev/writing-alert-plugins.html](http://cabotapp.com/dev/writing-alert-plugins.html)
+
+
+## debug
+
+官方DEBUG测试 http://qydev.weixin.qq.com/debug
